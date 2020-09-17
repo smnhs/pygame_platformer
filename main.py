@@ -24,6 +24,8 @@ bgX2 = bg.get_width()
 # music
 play_music = False
 
+filename_maps = 'maps'
+
 clock = pygame.time.Clock()
 
 
@@ -146,7 +148,7 @@ class MapEditor:
         self.scrollval = 0
         self.scrollloop = 5
         self.color = color
-        self.filename = 'maps'
+        self.filename = filename_maps
         try:
             # load saved maps
             with open(self.filename, 'rb') as fp:
@@ -506,7 +508,7 @@ def playMusic(file):
 def loadmap(index):
     """Creates Platform objects from map data."""
     global anz_maps
-    with open('maps', 'rb') as fp:
+    with open(filename_maps, 'rb') as fp:
         maps = pickle.load(fp)
     Platform.plats = []
     for plat in maps[index]:
