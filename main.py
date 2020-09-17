@@ -420,8 +420,8 @@ def gameover():
     pygame.display.update()
     # Buttons
     w = 500
-    btns = [Button(fg_color, 400-w/2, 550, w, 60, "NOCHMAL", textsize=60),
-            Button(fg_color, 400-w/2, 615, w, 60, "MENÜ", textsize=60)]
+    btns = [Button(fg_color, 400-w/2, 550, w, 60, "RESTART", textsize=60),
+            Button(fg_color, 400-w/2, 615, w, 60, "MENU", textsize=60)]
 
     while over:
         pos = pygame.mouse.get_pos()
@@ -465,9 +465,9 @@ def ziel():
     text2 = bigfont.render("ZIEL", 1, (250, 250, 250))
     # Buttons
     w = 500
-    btns = [Button((0,0,0), 400-w/2, 550, w, 60, "NÄCHSTES", bg=(0,150,150), textsize=60),
-            Button((0,0,0), 400-w/2, 615, w, 60, "NOCHMAL", bg=(0,150,150), textsize=60),
-            Button((0,0,0), 400-w/2, 680, w, 60, "MENÜ", bg=(0,150,150), textsize=60)]
+    btns = [Button((0,0,0), 400-w/2, 550, w, 60, "NEXT", bg=(0,150,150), textsize=60),
+            Button((0,0,0), 400-w/2, 615, w, 60, "RESTART", bg=(0,150,150), textsize=60),
+            Button((0,0,0), 400-w/2, 680, w, 60, "MENU", bg=(0,150,150), textsize=60)]
 
     while ziel:
         pos = pygame.mouse.get_pos()
