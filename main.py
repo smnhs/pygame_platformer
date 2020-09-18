@@ -23,6 +23,7 @@ bgX = 0
 bgX2 = bg.get_width()
 # music
 play_music = True
+# music_time_stamp = 0
 
 filename_maps = 'maps'
 
@@ -504,6 +505,7 @@ def ziel():
 def playMusic(file):
     music = pygame.mixer.music.load(file)
     pygame.mixer.music.play(-1)
+    pygame.mixer.music.pause()
 
 def loadmap(index):
     """Creates Platform objects from map data."""
@@ -532,16 +534,19 @@ gamevar = 1         # next game state: 0=previous-level; 1=startpage; 2=next-lev
 anz_maps = 0        # total number of maps
 mapnum = 0          # number of current map
 
+
 while True:
     if gamevar == 1:
+        if play_music:
+            pygame.mixer.music.fadeout(1000)
+            playMusic('slowmotion.mp3')
         mapnum = start()
     elif gamevar == 2:
         mapnum += 1
         if mapnum >= anz_maps:
             mapnum = 0
     # print(mapnum)
-    if play_music:
-        playMusic('slowmotion.mp3')
+    pygame.mixer.music.unpause()
 
     # pause
     pauseButton = Button(fg_color, 750, 10, 40, 40, 'II', fill=False)
@@ -569,7 +574,7 @@ while True:
             # pause
             if pauseButton.clicked(event, pos):
                 pause = True
-                pygame.mixer.music.pause()
+                pygame.mixer.music.set_volume(0.3)
                 surf = pygame.Surface((800, 800))
                 surf.set_alpha(200)
                 surf.fill((0, 20, 20))
@@ -588,7 +593,7 @@ while True:
                     if keys[pygame.K_SPACE]:
                         pause = False
                     clock.tick(fps)
-                pygame.mixer.music.unpause()
+                pygame.mixer.music.set_volume(1)
 
         # right/left input
         keys = pygame.key.get_pressed()
@@ -626,11 +631,14 @@ while True:
         finishplat = Platform.plats[finishplatindex]
         finishx = finishplat.x+finishplat.width - 100
         if man.x+man.width/2 > finishx:
+            pygame.mixer.music.set_volume(0.8)
             run = False
             gamevar = ziel()
+            pygame.mixer.music.set_volume(1)
 
         # gameover
         if man.y > 800:
-            pygame.mixer.music.fadeout(800)
+            pygame.mixer.music.set_volume(0.5)
             run = False
             gamevar = gameover()
+            pygame.mixer.music.set_volume(1)
