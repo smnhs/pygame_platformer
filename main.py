@@ -23,7 +23,6 @@ bgX = 0
 bgX2 = bg.get_width()
 # music
 play_music = True
-# music_time_stamp = 0
 
 filename_maps = 'maps'
 
@@ -92,13 +91,14 @@ class Player(object):
             self.gravity_count = 0
 
     def durchfall(self, fall):
-        """To not fall through a platform."""
+        """Check wether player would fall through a platform due to fast movement by gravity."""
         self.boxupdate()
         for plat in Platform.plats:
             plat.boxupdate()
+            # is players X in X-area of platform?
             if self.hitbox[2] > plat.hitbox[0] and self.hitbox[0] < plat.hitbox[2]:
+                # is player before gravity above platform and after movement under the platform?
                 if self.hitbox[3] < plat.hitbox[3] and self.hitbox[3] + fall > plat.hitbox[1]:
-                    # print("Platform")
                     return plat.hitbox[1]
         return False
 
@@ -141,7 +141,7 @@ class MapEditor:
         self.x = 90
         self.y = 30
         self.surfwidth = 750
-        self.surfheight = 761 # 800
+        self.surfheight = 761
         self.gridwidth = 700
         self.gridheight = 760
         self.cellwidth = 50
@@ -155,6 +155,7 @@ class MapEditor:
             with open(self.filename, 'rb') as fp:
                 self.maps = pickle.load(fp)
         except:
+            print('Error while reading maps file.')
             self.maps = []
         self.index = len(self.maps)
 
@@ -273,8 +274,8 @@ class MapEditor:
                 colnum = (plate[0]//self.cellwidth)
                 rownum = (plate[1]//self.cellheight) - 1
                 length = plate[2]//self.cellwidth
-                for l in range(length):
-                    maplist[rownum][colnum+l] = 1
+                for el in range(length):
+                    maplist[rownum][colnum+el] = 1
             return maplist
 
     def newmap(self):
@@ -466,9 +467,9 @@ def ziel():
     text2 = bigfont.render("ZIEL", 1, (250, 250, 250))
     # Buttons
     w = 500
-    btns = [Button((0,0,0), 400-w/2, 550, w, 60, "NEXT", bg=(0,150,150), textsize=60),
-            Button((0,0,0), 400-w/2, 615, w, 60, "RESTART", bg=(0,150,150), textsize=60),
-            Button((0,0,0), 400-w/2, 680, w, 60, "MENU", bg=(0,150,150), textsize=60)]
+    btns = [Button((0,0,0), 400 - w/2, 550, w, 60, "NEXT", bg=(0,150,150), textsize=60),
+            Button((0,0,0), 400 - w/2, 615, w, 60, "RESTART", bg=(0,150,150), textsize=60),
+            Button((0,0,0), 400 - w/2, 680, w, 60, "MENU", bg=(0,150,150), textsize=60)]
 
     while ziel:
         pos = pygame.mouse.get_pos()
