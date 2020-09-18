@@ -22,7 +22,7 @@ bg = pygame.image.fromstring(png_bg.tobytes(), png_bg.size, png_bg.mode).convert
 bgX = 0
 bgX2 = bg.get_width()
 # music
-play_music = False
+play_music = True
 
 filename_maps = 'maps'
 
@@ -541,7 +541,7 @@ while True:
             mapnum = 0
     # print(mapnum)
     if play_music:
-        playMusic('music.mp3')
+        playMusic('slowmotion.mp3')
 
     # pause
     pauseButton = Button(fg_color, 750, 10, 40, 40, 'II', fill=False)
