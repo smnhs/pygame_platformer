@@ -3,7 +3,7 @@ A small platform like game built in python with **pygame**.
 Without enemies, just jump and run.  
 You can make your own level in the **level editor**
 
-### Requierments (my version):
+### Requirements (my version):
 * Python (3.5)
 * pygame (1.9)
 * PIL (5.2)
