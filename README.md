@@ -1,7 +1,7 @@
 # Simple Platform Game
 A small platform like game built in python with **pygame**.  
 Without enemies, just jump and run.  
-You can make your own level in the **level editor**
+You can make your own level in the grid based **level editor**.
 
 ### Requirements (my version):
 * Python (3.5)
