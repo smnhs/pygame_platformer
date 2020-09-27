@@ -9,6 +9,15 @@ You can make your own level in the **level editor**
 * PIL (5.2)
 * pickle (4.0)
 
+### How to run:
+python3 main.py
+
+### Controls:
+movement   | key
+---------- | ------
+left/right | arrow keys
+jump       | space
+
 ### Screenshots:
 1. *start menu*
 2. *playing scene*
