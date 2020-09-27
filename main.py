@@ -1,5 +1,4 @@
 import pygame
-from PIL import Image
 import sys
 import pickle
 
@@ -17,8 +16,7 @@ smallfont = pygame.font.SysFont('comicsans', 140)
 font = pygame.font.SysFont('comicsans', 180)
 bigfont = pygame.font.SysFont('comicsans', 250)
 # background image
-png_bg = Image.open('bg.png')
-bg = pygame.image.fromstring(png_bg.tobytes(), png_bg.size, png_bg.mode).convert()
+bg = pygame.image.load('bg.bmp')
 bgX = 0
 bgX2 = bg.get_width()
 # music

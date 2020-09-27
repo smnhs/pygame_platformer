@@ -6,7 +6,6 @@ You can make your own level in the grid based **level editor**.
 ### Requirements (my version):
 * Python (3.5)
 * pygame (1.9)
-* PIL (5.2)
 * pickle (4.0)
 
 ### How to run:
